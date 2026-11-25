@@ -1,0 +1,37 @@
+/* Aura — polish.css : final overrides & cross-browser fixes (loaded last) */
+.guided-text{position:relative}
+.tile,.mood-btn,.theme-opt,.nav-btn,.mix-toggle{position:relative;overflow:hidden}
+/* let hover/active transforms work after entrance animations finish */
+.tile{animation-fill-mode:backwards}
+.view.is-active{animation-fill-mode:backwards}
+/* zero-height paths can't use bounding-box gradients — use a user-space one */
+#moodChart .line{stroke:url(#gLine)}
+/* pseudo-fullscreen night sky (iPhone Safari has no element fullscreen) */
+body:has(.night-stage.pseudo-full) .topbar,
+body:has(.night-stage.pseudo-full) .dock,
+body:has(.night-stage.pseudo-full) .footer{display:none}
+body:has(.night-stage.pseudo-full) .main{z-index:160}
+/* tiny phones: keep everything inside 360px */
+@media (max-width:380px){
+  .btn{padding:0 16px}
+  .hero-cta .btn{flex:1 1 100%}
+  .moods{gap:5px}
+  .mood-btn{font-size:.68rem;min-height:76px}
+  .mood-e{font-size:1.45rem}
+  .row.nowrap{flex-wrap:wrap}
+  .row.nowrap .btn{flex:1 1 100%}
+}
+/* very large screens: a little more air */
+@media (min-width:2200px){
+  .main{max-width:92rem}
+  .orb-stage{width:min(40vw,760px);height:min(40vw,760px)}
+}
+/* touch devices: no sticky hover lift */
+@media (hover:none){
+  .btn:hover,.chip:hover,.tile:hover{transform:none}
+}
+/* forced colours / high contrast */
+@media (forced-colors:active){
+  .glass,.btn,.chip,.mood-btn{border:1px solid CanvasText}
+  #bg,.grain,#fx{display:none}
+}
