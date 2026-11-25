@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en" data-theme="aurora">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aura — breathe, focus, sleep</title>
+<meta name="description" content="Aura is a free, calm wellbeing sanctuary: guided breathing with a living orb, meditation timer with singing bowls, a generative soundscape mixer, focus mode with lo-fi, mood journal, stretches and a night-sky wind-down. 100% in your browser.">
+<meta property="og:title" content="Aura — breathe, focus, sleep">
+<meta property="og:description" content="A beautiful, private calm space: breathing orb, singing bowls, synthesized rain &amp; ocean, lo-fi focus, gratitude journal and an aurora night sky.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kumarnikhildeveloperaccount.github.io/aura/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#060918">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aura">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/views.css">
+<link rel="stylesheet" href="css/polish.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <linearGradient id="gRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color:var(--c2)"/>
+      <stop offset=".55" style="stop-color:var(--c3)"/>
+      <stop offset="1" style="stop-color:var(--c4)"/>
+    </linearGradient>
+    <linearGradient id="gFig" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="250">
+      <stop offset="0" style="stop-color:var(--c2)"/>
+      <stop offset="1" style="stop-color:var(--c3)"/>
+    </linearGradient>
+    <linearGradient id="gLine" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="310" y2="0">
+      <stop offset="0" style="stop-color:var(--c2)"/>
+      <stop offset=".55" style="stop-color:var(--c3)"/>
+      <stop offset="1" style="stop-color:var(--c4)"/>
+    </linearGradient>
+    <linearGradient id="gMood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--c2);stop-opacity:.55"/>
+      <stop offset="1" style="stop-color:var(--c3);stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-breathe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5" opacity=".65"/><circle cx="12" cy="12" r="10" opacity=".35"/></symbol>
+  <symbol id="i-med" viewBox="0 0 24 24"><path d="M12 20c-4.2 0-8-2-9-6 3 0 6.2 1.2 9 4 2.8-2.8 6-4 9-4-1 4-4.8 6-9 6z"/><path d="M12 18c-2.2-3.2-2.2-8.4 0-12.5 2.2 4.1 2.2 9.3 0 12.5z"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 12h1.5M7 8.5v7M11 5v14M15 8v8M19 10v4M21.5 12h0"/></symbol>
+  <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.8 1.8M9.5 2.5h5M19 5.5l1.5 1.5"/></symbol>
+  <symbol id="i-journal" viewBox="0 0 24 24"><path d="M6 3.5h10.5a2.5 2.5 0 0 1 2.5 2.5v14.5H8.5A2.5 2.5 0 0 1 6 18z"/><path d="M10 8.5h5.5M10 12.5h3.5M6 18a2.5 2.5 0 0 1 2.5-2.5H19"/></symbol>
+  <symbol id="i-move" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M4.5 9.5l7.5 1 7.5-1M12 10.5v5l-4 5.5M12 15.5l4 5.5"/></symbol>
+  <symbol id="i-night" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M17 3.5v3M15.5 5h3"/></symbol>
+  <symbol id="i-about" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.3A4.6 4.6 0 0 1 12 7.6a4.6 4.6 0 0 1 9.2 3.6C19.5 15.9 12 20.5 12 20.5z"/></symbol>
+  <symbol id="i-vol-on" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.3 6.3a8 8 0 0 1 0 11.4"/></symbol>
+  <symbol id="i-vol-off" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><path d="M12 3c4 4.8 6.2 8.2 6.2 11.2a6.2 6.2 0 0 1-12.4 0C5.8 11.2 8 7.8 12 3z"/><path d="M9.2 14.5a2.8 2.8 0 0 0 2.8 2.8"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5l11 6.5-11 6.5z" fill="currentColor"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+</svg>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div id="veil" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<header class="topbar" id="topbar">
+  <button class="brand" id="brand" type="button" aria-label="Aura — go home">
+    <span class="brand-orb" aria-hidden="true"><i></i></span>
+    <span class="brand-text">Aura</span>
+  </button>
+
+  <div id="scrim" class="scrim" aria-hidden="true"></div>
+  <nav id="nav" class="nav" aria-label="Main navigation">
+    <button class="nav-btn" type="button" data-view="home" style="--i:0"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></button>
+    <button class="nav-btn" type="button" data-view="breathe" style="--i:1"><svg class="ic"><use href="#i-breathe"/></svg><span>Breathe</span></button>
+    <button class="nav-btn" type="button" data-view="meditate" style="--i:2"><svg class="ic"><use href="#i-med"/></svg><span>Meditate</span></button>
+    <button class="nav-btn" type="button" data-view="sounds" style="--i:3"><svg class="ic"><use href="#i-sound"/></svg><span>Sounds</span></button>
+    <button class="nav-btn" type="button" data-view="focus" style="--i:4"><svg class="ic"><use href="#i-focus"/></svg><span>Focus</span></button>
+    <button class="nav-btn" type="button" data-view="journal" style="--i:5"><svg class="ic"><use href="#i-journal"/></svg><span>Journal</span></button>
+    <button class="nav-btn" type="button" data-view="move" style="--i:6"><svg class="ic"><use href="#i-move"/></svg><span>Move</span></button>
+    <button class="nav-btn" type="button" data-view="night" style="--i:7"><svg class="ic"><use href="#i-night"/></svg><span>Night sky</span></button>
+    <button class="nav-btn" type="button" data-view="about" style="--i:8"><svg class="ic"><use href="#i-about"/></svg><span>About</span></button>
+    <p class="nav-foot">Tip: every sound in Aura is made live by your device. Tiny orchestra, zero musicians.</p>
+  </nav>
+
+  <div class="top-actions">
+    <button id="soundToggle" class="icon-btn" type="button" aria-pressed="false" aria-label="Sound is off. Turn sound on">
+      <svg class="ic"><use id="soundIcon" href="#i-vol-off"/></svg>
+    </button>
+    <button id="themeBtn" class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="themeMenu" aria-label="Change theme">
+      <svg class="ic"><use href="#i-theme"/></svg>
+    </button>
+    <button id="menuBtn" class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <svg class="ic"><use id="menuIcon" href="#i-menu"/></svg>
+    </button>
+  </div>
+
+  <div id="themeMenu" class="theme-menu glass" role="menu" aria-label="Themes" hidden>
+    <p class="eyebrow">Choose your sky</p>
+    <button class="theme-opt" type="button" role="menuitemradio" aria-checked="true" data-theme="aurora"><i class="sw sw-aurora"></i><span>Aurora</span></button>
+    <button class="theme-opt" type="button" role="menuitemradio" aria-checked="false" data-theme="ocean"><i class="sw sw-ocean"></i><span>Ocean</span></button>
+    <button class="theme-opt" type="button" role="menuitemradio" aria-checked="false" data-theme="forest"><i class="sw sw-forest"></i><span>Forest</span></button>
+    <button class="theme-opt" type="button" role="menuitemradio" aria-checked="false" data-theme="ember"><i class="sw sw-ember"></i><span>Midnight Ember</span></button>
+    <button class="theme-opt" type="button" role="menuitemradio" aria-checked="false" data-theme="sunrise"><i class="sw sw-sunrise"></i><span>Sunrise</span></button>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+
+  <!-- HOME -->
+  <section id="view-home" class="view is-active" data-view="home" aria-labelledby="h-home">
+    <div class="hero">
+      <p class="eyebrow" id="greetTime">Hello, lovely human</p>
+      <h1 id="h-home" class="hero-title" tabindex="-1">
+        <span class="w w1">Breathe.</span>
+        <span class="w w2">Focus.</span>
+        <span class="w w3">Sleep.</span>
+      </h1>
+      <p class="hero-sub" id="homeJoke">Breathe in. Breathe out. You just did something today.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" type="button" data-go="breathe"><svg class="ic"><use href="#i-play"/></svg><span>Start breathing</span></button>
+        <button class="btn btn-ghost" type="button" data-go="sounds">Make it rain (softly)</button>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <button class="tile glass" type="button" data-go="breathe" style="--d:0"><span class="tile-ic"><svg class="ic"><use href="#i-breathe"/></svg></span><b>Breathe</b><small>Box, 4-7-8, coherent &amp; the sigh</small></button>
+      <button class="tile glass" type="button" data-go="meditate" style="--d:1"><span class="tile-ic"><svg class="ic"><use href="#i-med"/></svg></span><b>Meditate</b><small>Timer, singing bowls, guided reads</small></button>
+      <button class="tile glass" type="button" data-go="sounds" style="--d:2"><span class="tile-ic"><svg class="ic"><use href="#i-sound"/></svg></span><b>Soundscapes</b><small>Rain, ocean, fire, birds &amp; noise</small></button>
+      <button class="tile glass" type="button" data-go="focus" style="--d:3"><span class="tile-ic"><svg class="ic"><use href="#i-focus"/></svg></span><b>Focus</b><small>Pomodoro with generative lo-fi</small></button>
+      <button class="tile glass" type="button" data-go="journal" style="--d:4"><span class="tile-ic"><svg class="ic"><use href="#i-journal"/></svg></span><b>Journal</b><small>Mood check-ins &amp; gratitude jar</small></button>
+      <button class="tile glass" type="button" data-go="move" style="--d:5"><span class="tile-ic"><svg class="ic"><use href="#i-move"/></svg></span><b>Move</b><small>Affirmations &amp; gentle stretches</small></button>
+      <button class="tile glass tile-wide" type="button" data-go="night" style="--d:6"><span class="tile-ic"><svg class="ic"><use href="#i-night"/></svg></span><b>Night sky</b><small>Stars, aurora &amp; shooting wishes</small></button>
+    </div>
+
+    <div class="grid two">
+      <article class="card glass affirm-card">
+        <p class="eyebrow">Today's affirmation</p>
+        <blockquote id="homeAffirm" class="quote">You are allowed to go slowly.</blockquote>
+        <button class="btn btn-ghost sm" type="button" data-go="move">More kindness →</button>
+      </article>
+      <article class="card glass">
+        <p class="eyebrow">Your gentle stats</p>
+        <ul class="stats" id="homeStats"></ul>
+      </article>
+    </div>
+
+    <aside class="card glass notice" aria-label="Wellbeing notice">
+      <p><strong>Aura is a calm companion, not medical advice.</strong> If you're struggling, you deserve real support. In India, call <a href="tel:14416"><strong>Tele-MANAS 14416</strong></a> (free, 24×7). Elsewhere, find a local helpline at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. If you're in immediate danger, contact local emergency services.</p>
+    </aside>
+  </section>
+
+  <!-- BREATHE -->
+  <section id="view-breathe" class="view" data-view="breathe" aria-labelledby="h-breathe" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Guided breathing</p>
+      <h2 id="h-breathe" tabindex="-1">Follow the orb</h2>
+      <p class="lead">Your lungs already know how. The orb just makes it look expensive.</p>
+    </header>
+    <div class="breathe-layout">
+      <div class="orb-stage" id="orbStage">
+        <canvas id="breathCanvas" aria-hidden="true"></canvas>
+        <div class="orb-ui" aria-live="polite">
+          <p id="breathPhase" class="breath-phase">Ready when you are</p>
+          <p id="breathCount" class="breath-count">·</p>
+        </div>
+      </div>
+      <div class="panel glass breathe-panel">
+        <div class="chips" role="radiogroup" aria-label="Breathing pattern">
+          <button class="chip pattern-btn is-on" type="button" role="radio" aria-checked="true" data-pattern="box">Box 4·4·4·4</button>
+          <button class="chip pattern-btn" type="button" role="radio" aria-checked="false" data-pattern="478">4·7·8 Relax</button>
+          <button class="chip pattern-btn" type="button" role="radio" aria-checked="false" data-pattern="coherent">Coherent 5.5</button>
+          <button class="chip pattern-btn" type="button" role="radio" aria-checked="false" data-pattern="sigh">Physiological sigh</button>
+        </div>
+        <p id="breathDesc" class="muted desc"></p>
+        <label class="field"><span>Session length</span>
+          <select id="breathDuration">
+            <option value="1">1 minute — a tiny reset</option>
+            <option value="3" selected>3 minutes — the classic</option>
+            <option value="5">5 minutes — properly lovely</option>
+            <option value="10">10 minutes — deep calm</option>
+          </select>
+        </label>
+        <div class="toggles">
+          <label class="switch"><input type="checkbox" id="breathTones"><span class="track" aria-hidden="true"></span><span>Soft tones</span></label>
+          <label class="switch"><input type="checkbox" id="breathHaptics" checked><span class="track" aria-hidden="true"></span><span>Haptics <small id="hapticsNote" class="muted"></small></span></label>
+        </div>
+        <button id="breathStart" class="btn btn-primary wide" type="button" aria-pressed="false">Begin</button>
+        <p class="muted small" id="breathStats">No breaths logged yet. (You've been breathing anyway. Overachiever.)</p>
+        <p class="muted tiny">Tip: you can also tap the orb to start or pause. Feeling light-headed? Stop and breathe normally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDITATE -->
+  <section id="view-meditate" class="view" data-view="meditate" aria-labelledby="h-meditate" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Meditation</p>
+      <h2 id="h-meditate" tabindex="-1">Sit. Be. Bowl.</h2>
+      <p class="lead">Singing bowls synthesised from scratch. No bowls were struck in real life.</p>
+    </header>
+    <div class="med-layout">
+      <div class="panel glass timer-panel">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+            <circle class="ring-bg" cx="110" cy="110" r="96"/>
+            <circle id="medRingProg" class="ring-prog" cx="110" cy="110" r="96"/>
+          </svg>
+          <div class="ring-center">
+            <p id="medTime" class="big-time" aria-live="off">10:00</p>
+            <p id="medState" class="muted small">Sit comfortably</p>
+          </div>
+        </div>
+        <div class="chips center" role="radiogroup" aria-label="Duration">
+          <button class="chip med-dur" type="button" role="radio" aria-checked="false" data-min="3">3m</button>
+          <button class="chip med-dur" type="button" role="radio" aria-checked="false" data-min="5">5m</button>
+          <button class="chip med-dur is-on" type="button" role="radio" aria-checked="true" data-min="10">10m</button>
+          <button class="chip med-dur" type="button" role="radio" aria-checked="false" data-min="15">15m</button>
+          <button class="chip med-dur" type="button" role="radio" aria-checked="false" data-min="20">20m</button>
+        </div>
+        <div class="grid two tight">
+          <label class="field"><span>Custom minutes</span><input id="medCustom" type="number" min="1" max="180" inputmode="numeric" placeholder="e.g. 12"></label>
+          <label class="field"><span>Interval bell</span>
+            <select id="medInterval">
+              <option value="0">No interval bells</option>
+              <option value="1">Every minute</option>
+              <option value="2">Every 2 minutes</option>
+              <option value="5" selected>Every 5 minutes</option>
+            </select>
+          </label>
+        </div>
+        <div class="row center">
+          <button id="medStart" class="btn btn-primary" type="button">Begin</button>
+          <button id="medReset" class="btn btn-ghost" type="button">Reset</button>
+          <button id="medBowl" class="btn btn-ghost" type="button">Strike bowl</button>
+        </div>
+      </div>
+      <div class="panel glass guided-panel">
+        <h3>Guided meditations</h3>
+        <div id="guidedList" class="chips guided-list" role="radiogroup" aria-label="Guided meditations"></div>
+        <div id="guidedText" class="guided-text" tabindex="0" aria-label="Meditation script">
+          <p class="empty">Pick a meditation above. We'll read it slowly, like a bedtime story for grown-ups.</p>
+        </div>
+        <div class="row wrap">
+          <button id="guidedPlay" class="btn btn-primary" type="button" aria-pressed="false">Read aloud</button>
+          <button id="guidedStop" class="btn btn-ghost" type="button">Stop</button>
+        </div>
+        <div class="grid two tight">
+          <label class="field"><span>Voice</span><select id="guidedVoice"><option value="">Default voice</option></select></label>
+          <label class="field"><span>Pace</span><input id="guidedRate" type="range" min="0.6" max="1.1" step="0.05" value="0.85" aria-label="Reading pace"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUNDS -->
+  <section id="view-sounds" class="view" data-view="sounds" aria-labelledby="h-sounds" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Soundscape mixer</p>
+      <h2 id="h-sounds" tabindex="-1">Paint with sound</h2>
+      <p class="lead">Every drop and crackle is synthesised live. No clouds were harmed.</p>
+    </header>
+    <div class="panel glass mixer-top">
+      <div class="chips" aria-label="Presets">
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="storm">⛈️ Cosy storm</button>
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="beach">🌊 Beach at dusk</button>
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="campfire">🔥 Campfire</button>
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="forest">🌲 Morning forest</button>
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="deep">🧠 Deep focus</button>
+        <button class="chip preset-btn" type="button" aria-pressed="false" data-preset="cosmos">✨ Cosmos</button>
+      </div>
+      <div class="row wrap">
+        <label class="field grow"><span>Master volume</span><input id="masterVol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Master volume"></label>
+        <button id="mixStop" class="btn btn-ghost" type="button">Silence all</button>
+      </div>
+    </div>
+    <div id="mixer" class="mixer" aria-label="Sound channels"></div>
+    <div class="grid two">
+      <article class="panel glass">
+        <h3>Binaural beats</h3>
+        <label class="switch"><input type="checkbox" id="binauralToggle"><span class="track" aria-hidden="true"></span><span>Enable binaural tone</span></label>
+        <label class="field"><span>Beat frequency</span>
+          <select id="binauralBeat">
+            <option value="2">Delta · 2 Hz — sleepy</option>
+            <option value="6" selected>Theta · 6 Hz — dreamy</option>
+            <option value="10">Alpha · 10 Hz — relaxed focus</option>
+            <option value="14">Beta · 14 Hz — alert</option>
+          </select>
+        </label>
+        <p id="binauralWarn" class="warn">🎧 Headphones required — binaural beats only work when each ear gets its own tone. Keep the volume low. Avoid if you have epilepsy or a seizure history, and never while driving.</p>
+      </article>
+      <article class="panel glass">
+        <h3>Sleep timer</h3>
+        <p class="muted small">Sounds fade out gently over the last minute, like a polite guest leaving.</p>
+        <div class="chips">
+          <button class="chip sleep-btn" type="button" aria-pressed="false" data-min="15">15m</button>
+          <button class="chip sleep-btn" type="button" aria-pressed="false" data-min="30">30m</button>
+          <button class="chip sleep-btn" type="button" aria-pressed="false" data-min="45">45m</button>
+          <button class="chip sleep-btn" type="button" aria-pressed="false" data-min="60">1h</button>
+          <button class="chip sleep-btn" type="button" aria-pressed="false" data-min="90">1.5h</button>
+        </div>
+        <p id="sleepStatus" class="status" aria-live="polite">No timer set. Sounds will play until you say goodnight.</p>
+        <button id="sleepCancel" class="btn btn-ghost sm" type="button" hidden>Cancel timer</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section id="view-focus" class="view" data-view="focus" aria-labelledby="h-focus" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Focus mode</p>
+      <h2 id="h-focus" tabindex="-1">One gentle thing at a time</h2>
+      <p class="lead">Tomatoes optional. Focus mandatory-ish.</p>
+    </header>
+    <div class="focus-layout">
+      <div class="panel glass timer-panel">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+            <circle class="ring-bg" cx="110" cy="110" r="96"/>
+            <circle id="focusRingProg" class="ring-prog" cx="110" cy="110" r="96"/>
+          </svg>
+          <div class="ring-center">
+            <p id="focusTime" class="big-time">25:00</p>
+            <p id="focusMode" class="muted small">Focus</p>
+          </div>
+        </div>
+        <label class="field"><span>Working on</span><input id="focusTask" type="text" maxlength="80" placeholder="What are we gently conquering?" autocomplete="off"></label>
+        <div id="focusDots" class="dots" aria-label="Sessions this cycle"></div>
+        <div class="row center">
+          <button id="focusStart" class="btn btn-primary" type="button">Start</button>
+          <button id="focusSkip" class="btn btn-ghost" type="button">Skip</button>
+          <button id="focusReset" class="btn btn-ghost" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="panel glass">
+        <h3>Settings</h3>
+        <div class="grid three tight">
+          <label class="field"><span>Focus (min)</span><input id="focusWork" type="number" min="1" max="120" value="25" inputmode="numeric"></label>
+          <label class="field"><span>Break</span><input id="focusBreak" type="number" min="1" max="60" value="5" inputmode="numeric"></label>
+          <label class="field"><span>Long break</span><input id="focusLong" type="number" min="1" max="90" value="15" inputmode="numeric"></label>
+        </div>
+        <h3>Generative lo-fi</h3>
+        <label class="switch"><input type="checkbox" id="focusLofi"><span class="track" aria-hidden="true"></span><span>Play lo-fi beats</span></label>
+        <label class="field"><span>Lo-fi volume</span><input id="lofiVol" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Lo-fi volume"></label>
+        <div class="viz-wrap"><canvas id="lofiViz" aria-hidden="true"></canvas></div>
+        <p id="lofiNow" class="muted small">The band is tuning up. (The band is maths.)</p>
+        <p id="focusCount" class="status">0 focus sessions completed. The day is young.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNAL -->
+  <section id="view-journal" class="view" data-view="journal" aria-labelledby="h-journal" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Mood &amp; gratitude</p>
+      <h2 id="h-journal" tabindex="-1">How's the weather inside?</h2>
+      <p class="lead">No wrong answers. Except “fine” said through gritted teeth.</p>
+    </header>
+    <div class="grid two">
+      <article class="panel glass">
+        <h3>Check in</h3>
+        <div class="moods" role="radiogroup" aria-label="Your mood">
+          <button class="mood-btn" type="button" role="radio" aria-checked="false" data-mood="1"><span class="mood-e" aria-hidden="true">⛈️</span><span>Stormy</span></button>
+          <button class="mood-btn" type="button" role="radio" aria-checked="false" data-mood="2"><span class="mood-e" aria-hidden="true">🌧️</span><span>Drizzly</span></button>
+          <button class="mood-btn" type="button" role="radio" aria-checked="false" data-mood="3"><span class="mood-e" aria-hidden="true">⛅</span><span>Okay</span></button>
+          <button class="mood-btn" type="button" role="radio" aria-checked="false" data-mood="4"><span class="mood-e" aria-hidden="true">🌤️</span><span>Sunny</span></button>
+          <button class="mood-btn" type="button" role="radio" aria-checked="false" data-mood="5"><span class="mood-e" aria-hidden="true">🌈</span><span>Radiant</span></button>
+        </div>
+        <label class="field"><span>A note (optional)</span><textarea id="moodNote" rows="3" maxlength="400" placeholder="What's one word for today? Two is fine. We're not strict."></textarea></label>
+        <button id="moodSave" class="btn btn-primary" type="button">Save check-in</button>
+      </article>
+      <article class="panel glass">
+        <h3>The last 14 days</h3>
+        <div class="chart-wrap"><svg id="moodChart" viewBox="0 0 320 170" role="img" aria-label="Mood over the last 14 days"></svg></div>
+        <p id="moodStats" class="muted small"></p>
+      </article>
+    </div>
+    <article class="panel glass">
+      <h3>Gratitude jar</h3>
+      <form id="gratForm" class="row nowrap" autocomplete="off">
+        <label class="sr-only" for="gratInput">Something you're grateful for</label>
+        <input id="gratInput" class="input grow" type="text" maxlength="160" placeholder="Today I'm grateful for… (warm socks count)">
+        <button class="btn btn-primary" type="submit">Add</button>
+      </form>
+      <ul id="gratList" class="grat-list"></ul>
+      <p id="gratEmpty" class="empty">The jar is empty, but it's a very optimistic jar. Drop in one small good thing.</p>
+    </article>
+    <article class="panel glass data-row">
+      <div class="row wrap">
+        <button id="exportBtn" class="btn btn-ghost" type="button">Export data</button>
+        <button id="importBtn" class="btn btn-ghost" type="button">Import data</button>
+        <input id="importFile" class="sr-only" type="file" accept="application/json,.json" tabindex="-1" aria-hidden="true">
+        <button id="clearData" class="btn btn-ghost danger" type="button">Clear journal</button>
+      </div>
+      <p class="muted small">Everything stays in this browser (localStorage). No accounts, no servers, no peeking.</p>
+    </article>
+  </section>
+
+  <!-- MOVE -->
+  <section id="view-move" class="view" data-view="move" aria-labelledby="h-move" hidden>
+    <header class="view-head">
+      <p class="eyebrow">Kindness &amp; movement</p>
+      <h2 id="h-move" tabindex="-1">Be nice to your body</h2>
+      <p class="lead">It carries your brain around all day and rarely complains. Mostly.</p>
+    </header>
+    <div class="grid two">
+      <article class="panel glass affirm-panel">
+        <p class="eyebrow">Affirmation</p>
+        <blockquote id="affirmText" class="quote big">You are allowed to go slowly.</blockquote>
+        <div class="row wrap">
+          <button id="affirmNext" class="btn btn-primary" type="button">Another one</button>
+          <button id="affirmSpeak" class="btn btn-ghost" type="button">Say it to me</button>
+        </div>
+      </article>
+      <article class="panel glass stretch-panel">
+        <div class="chips" role="radiogroup" aria-label="Stretch routine">
+          <button class="chip routine-btn is-on" type="button" role="radio" aria-checked="true" data-routine="desk">🪑 Desk reset</button>
+          <button class="chip routine-btn" type="button" role="radio" aria-checked="false" data-routine="morning">☀️ Morning wake</button>
+          <button class="chip routine-btn" type="button" role="radio" aria-checked="false" data-routine="bedtime">🌙 Bedtime unwind</button>
+        </div>
+        <div class="figure-stage"><svg id="figure" viewBox="0 0 200 270" aria-hidden="true"></svg></div>
+        <h3 id="stretchName" aria-live="polite">Desk reset</h3>
+        <p id="stretchTip" class="muted">Six gentle moves, about three minutes. Your chair will miss you.</p>
+        <div class="progress" aria-hidden="true"><span id="stretchProg"></span></div>
+        <p id="stretchTime" class="muted small">Ready</p>
+        <div class="row center">
+          <button id="stretchStart" class="btn btn-primary" type="button">Start routine</button>
+          <button id="stretchStop" class="btn btn-ghost" type="button">Stop</button>
+        </div>
+        <p class="muted tiny">Move within a comfortable range. If anything hurts, stop — pain is not a personality trait.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- NIGHT -->
+  <section id="view-night" class="view view-night" data-view="night" aria-labelledby="h-night" hidden>
+    <div class="night-stage" id="nightStage">
+      <canvas id="nightCanvas" role="img" aria-label="Animated night sky with stars, aurora and shooting stars"></canvas>
+      <div class="night-ui">
+        <p class="eyebrow">Wind down</p>
+        <h2 id="h-night" tabindex="-1">The night sky is yours</h2>
+        <p id="nightLine" class="night-line" aria-live="polite">Let the day put its shoes by the door.</p>
+        <div class="row wrap">
+          <button id="nightSound" class="btn btn-primary" type="button" aria-pressed="false">Play night ambience</button>
+          <button id="nightBreath" class="btn btn-ghost" type="button" aria-pressed="false">Breathe with the aurora</button>
+          <button id="nightFull" class="btn btn-ghost icon-txt" type="button" aria-label="Toggle full screen"><svg class="ic"><use href="#i-expand"/></svg><span>Full screen</span></button>
+        </div>
+        <p class="muted tiny">Tip: tap a shooting star to make a wish. Tap the sky to summon one. You have that power now.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="view-about" class="view" data-view="about" aria-labelledby="h-about" hidden>
+    <header class="view-head">
+      <p class="eyebrow">About Aura</p>
+      <h2 id="h-about" tabindex="-1">Made with care, for you</h2>
+      <p class="lead">A tiny sanctuary that lives entirely in your browser. No accounts, no trackers, no “your streak is in danger!!” emails.</p>
+    </header>
+    <div class="grid two">
+      <article class="panel glass credits">
+        <p class="eyebrow">About / Made by</p>
+        <h3>Designed &amp; built by Kumar Nikhil</h3>
+        <p class="muted">Every gradient, synthesised raindrop, singing bowl and shooting star here is hand-written code — no stock audio, no images, no libraries.</p>
+        <div class="row wrap">
+          <a class="btn btn-primary" href="https://kumarnikhildeveloperaccount.github.io/" target="_blank" rel="noopener">Portfolio</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/kumar-nikhil-1000a9192/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="mailto:nkashyapnikhilnk@gmail.com">Email</a>
+        </div>
+        <p><a class="link-arrow" href="https://kumarnikhildeveloperaccount.github.io/" target="_blank" rel="noopener">More projects by Kumar Nikhil →</a></p>
+        <p class="gratitude">With gratitude to God — Om Namah Paarvati Pateh, Har Har Mahadev. May God bless you and everyone.</p>
+      </article>
+      <article class="panel glass">
+        <p class="eyebrow">Please read</p>
+        <h3>Not medical advice</h3>
+        <p class="muted">Aura offers relaxation exercises and general wellbeing ideas. It is not a substitute for professional diagnosis or treatment. Stop any exercise that makes you dizzy or uncomfortable.</p>
+        <h3>Need to talk to someone?</h3>
+        <ul class="help-list">
+          <li>🇮🇳 India — <a href="tel:14416"><strong>Tele-MANAS: 14416</strong></a> (free, 24×7, many languages)</li>
+          <li>🌍 Anywhere — <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a></li>
+          <li>🚨 In danger right now? Call your local emergency number.</li>
+        </ul>
+        <h3>Your privacy</h3>
+        <p class="muted">Check-ins, gratitude and settings are stored only on this device. Export them any time from the Journal.</p>
+        <p class="muted tiny">Psst… the logo enjoys being tapped. Seven times, specifically. It's a whole thing.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Designed &amp; built by <strong>Kumar Nikhil</strong> ·
+    <a href="https://kumarnikhildeveloperaccount.github.io/" target="_blank" rel="noopener">Portfolio</a> ·
+    <a href="https://www.linkedin.com/in/kumar-nikhil-1000a9192/" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="mailto:nkashyapnikhilnk@gmail.com">Email</a></p>
+  <p><a class="link-arrow" href="https://kumarnikhildeveloperaccount.github.io/" target="_blank" rel="noopener">More projects by Kumar Nikhil →</a></p>
+  <p class="gratitude">With gratitude to God — Om Namah Paarvati Pateh, Har Har Mahadev. May God bless you and everyone.</p>
+  <p class="tiny muted">Not medical advice. India: Tele-MANAS <a href="tel:14416">14416</a> · International: <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a></p>
+</footer>
+
+<nav id="dock" class="dock" aria-label="Quick navigation">
+  <button class="dock-btn" type="button" data-view="home"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></button>
+  <button class="dock-btn" type="button" data-view="breathe"><svg class="ic"><use href="#i-breathe"/></svg><span>Breathe</span></button>
+  <button class="dock-btn" type="button" data-view="sounds"><svg class="ic"><use href="#i-sound"/></svg><span>Sounds</span></button>
+  <button class="dock-btn" type="button" data-view="focus"><svg class="ic"><use href="#i-focus"/></svg><span>Focus</span></button>
+  <button class="dock-btn" type="button" data-view="night"><svg class="ic"><use href="#i-night"/></svg><span>Night</span></button>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">Aura needs JavaScript to breathe. (Ironic, we know.)</p></noscript>
+
+<script src="js/util.js" defer></script>
+<script src="js/audio.js" defer></script>
+<script src="js/soundscape.js" defer></script>
+<script src="js/lofi.js" defer></script>
+<script src="js/bg.js" defer></script>
+<script src="js/breath.js" defer></script>
+<script src="js/meditate.js" defer></script>
+<script src="js/sounds.js" defer></script>
+<script src="js/focus.js" defer></script>
+<script src="js/journal.js" defer></script>
+<script src="js/move.js" defer></script>
+<script src="js/night.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Aura — breathe, focus, sleep",
+  "short_name": "Aura",
+  "description": "A calm, private wellbeing sanctuary: breathing orb, meditation bowls, generative soundscapes, lo-fi focus, journal and night sky.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060918",
+  "theme_color": "#060918",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
